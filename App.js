@@ -4,6 +4,7 @@ import { createBottomTabNavigator, TabNavigator, TabBarBottom } from 'react-navi
 import YouTube from 'react-native-youtube';
 import { videos } from './config';
 import { Sound } from 'react-native-sound';
+import upload from './upload/ShareStoryScreen.js';
 
 import ObjectChooser from './ObjectChooser';
 import RemnantChooser from './RemnantChooser';
@@ -18,7 +19,7 @@ import SettingsPage from "./page/SettingsPage";
 import { Button } from "./component/Button.js";
 import pageStyles from "./page/styles.js";
 
-const youtubeApiKey = "AIzaSyDWgERNRbubs4t4Em7fOyQX2d-S6POo_aY"; 
+const youtubeApiKey = "AIzaSyDWgERNRbubs4t4Em7fOyQX2d-S6POo_aY";
 
 console.disableYellowBox = true;
 
@@ -104,15 +105,19 @@ const TabNav = createBottomTabNavigator({
   },
   Chooser: {screen: ObjectChooser},
   Settings: SettingsPage.navConfig,
-  Player: { screen: Player,
-  navigationOptions: {
+  Player: {
+    screen: Player,
+    navigationOptions: {
       tabBarVisible: false,
       tabBarIcon: null,
-    }},
-    Settings: SettingsPage.navConfig,
-    Contact: ContactPage.navConfig,
-    Upload: UploadPage.navConfig,
-    Help: HelpPage.navConfig
+    }
+  },
+  Settings: SettingsPage.navConfig,
+  Contact: ContactPage.navConfig,
+  Upload: {
+    screen: upload
+  },
+  Help: HelpPage.navConfig
 }, {
   navigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ focused, tintColor }) => {
